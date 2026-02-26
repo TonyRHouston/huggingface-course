@@ -1,12 +1,9 @@
 name: Build PR Documentation
-
 on:
-  pull_request:
-
+  workflow_dispatch: {}
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
-
 jobs:
   build:
     uses: huggingface/doc-builder/.github/workflows/build_pr_documentation.yml@main
@@ -16,4 +13,5 @@ jobs:
       package: course
       path_to_docs: course/chapters/
       additional_args: --not_python_module
-      languages: ar bn de en es fa fr gj he hi id it ja ko my ne pl pt ru ro te th tr vi zh-CN zh-TW
+      languages: ar bn de en es fa fr gj he hi id it ja ko my ne pl pt ru ro te th
+        tr vi zh-CN zh-TW
